@@ -1,8 +1,9 @@
 <html>
 <head>
+    <body bgcolor="#C0C0C0"></body>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>筋トレ管理</title>
+    <title>紀錄熱量</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
@@ -27,6 +28,9 @@
             <input type ="button" name="Submit" value="晚餐" class="btn btn-info" onclick="location.href='jiatext112.html'"/>
             <input type ="button" name="Submit" value="點心" class="btn btn-info" onclick="location.href='jiatext112.html'"/>
             <br />
+            <br />
+            <input type ="button" name="Submit" value="掃描條碼" class="btn btn-info" onclick="location.href='https://cloud.magiclen.org/tw/qrcode/scanner'"/>
+            <input type ="button" name="Submit" value="加入產品" class="btn btn-info" onclick="location.href='jiatext113.html'"/>
     
             <script src="https://static.line-scdn.net/liff/edge/2.1//sdk.js"></Script>
             <script>
@@ -54,6 +58,21 @@
                         pushMsg($('#date').val());
                     });
                 });
+
+                $(document).ready(function () {
+                    const liffId = "1656983506-wPPvRmZv";
+                    initializeLiff(liffId);
+                })
+        
+                function initializeLiff(liffId) {
+                    liff.init({
+                        liffId: liffId
+                    }).then(() => {
+                        initializeApp();
+                    }).catch((err) => {
+                        console.log('LIFF Initialization failed ', err);
+                    });
+                }
             </script>
 
 </body>
